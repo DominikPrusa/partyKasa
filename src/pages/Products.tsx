@@ -31,9 +31,10 @@ const Products = () => {
 
   const handleDecreaseItem = (itemToDecrease: Item) => {
     setItemList((currentItems) => {
-      const indexToRemove = currentItems.findIndex(
+      const indexToRemove = currentItems.findLastIndex(
         (item) =>
           item.name === itemToDecrease.name &&
+          item.fullName === itemToDecrease.fullName &&
           item.amount === itemToDecrease.amount &&
           item.price === itemToDecrease.price,
       );

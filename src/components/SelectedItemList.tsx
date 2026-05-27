@@ -83,7 +83,7 @@ const SelectedItemsList = ({
         <div className="space-y-3">
           {groupedItems.map((item) => (
             <div
-              key={`${item.name}-${item.amount}-${item.price}`}
+              key={`${item.name}-${item.fullName}-${item.amount}-${item.price}`}
               className="flex items-center gap-3"
             >
               <div className="min-w-0 flex-1">

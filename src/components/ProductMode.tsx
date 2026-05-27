@@ -9,7 +9,7 @@ type ProductModeProps = {
 // the products should be filtered for the correct category
 const ProductMode = ({ products, onProductClick }: ProductModeProps) => {
   return (
-    <div className="grid grid-cols-2 gap-3 mt-4">
+    <div className="grid grid-cols-2 gap-3 my-4">
       {products.map((product, index) => (
         <ProductCard
           key={`${product.name}-${product.amount}-${index}`}

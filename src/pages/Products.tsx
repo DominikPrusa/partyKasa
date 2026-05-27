@@ -6,6 +6,7 @@ import { useState } from "react";
 import ProductMode from "../components/ProductMode";
 import type { Item } from "../components/SelectedItemList";
 import SelectedItemsList from "../components/SelectedItemList";
+import PaymentMode from "../components/PaymentMode";
 
 const Products = () => {
   const [searchParams] = useSearchParams();
@@ -44,6 +45,8 @@ const Products = () => {
       return currentItems.filter((_, index) => index !== indexToRemove);
     });
   };
+
+  const totalPrice = itemList.reduce((sum, item) => sum + item.price, 0);
 
   return (
     <main className="min-h-screen bg-zinc-50 px-6 text-zinc-950">
@@ -109,7 +112,7 @@ const Products = () => {
             onProductClick={handleProductClick}
           />
         ) : (
-          <div>payment</div>
+          <PaymentMode totalPrice={totalPrice} />
         )}
       </div>
     </main>

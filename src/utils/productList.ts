@@ -1,14 +1,19 @@
-import { BottleWine, Cross, Leaf, ShipWheel } from "lucide-react";
+import { BottleWine, Droplet, Cross, Leaf, ShipWheel } from "lucide-react";
 
 export type Product = {
   category: "panaky" | "pivo" | "drinky" | "jidlo";
   name: string;
   price: number;
   amount: string;
-  icon: React.ElementType;
+
+  // React icon component OR asset image path
+  icon?: React.ElementType;
+  image?: string;
+
   description?: string;
   primaryColor: string;
   bgColor: string;
+  borderColor: string;
 };
 
 export const products: Product[] = [
@@ -19,9 +24,11 @@ export const products: Product[] = [
     price: 40,
     amount: "0,02 l",
     icon: Cross,
+    image: "/images/products/jager.png",
     description: "Bylinný likér Jägermeister, malý panák.",
-    primaryColor: "text-green-700",
-    bgColor: "bg-green-50",
+    primaryColor: "text-white",
+    bgColor: "bg-green-900",
+    borderColor: "border-orange-600",
   },
   {
     category: "panaky",
@@ -29,29 +36,33 @@ export const products: Product[] = [
     price: 70,
     amount: "0,04 l",
     icon: Cross,
+    image: "/images/products/jager.png",
     description: "Bylinný likér Jägermeister, velký panák.",
-    primaryColor: "text-green-700",
-    bgColor: "bg-green-50",
+    primaryColor: "text-white",
+    bgColor: "bg-green-900",
+    borderColor: "border-orange-600",
   },
   {
     category: "panaky",
     name: "Vodka",
     price: 40,
     amount: "0,02 l",
-    icon: BottleWine,
+    icon: Droplet,
     description: "Vodka, malý panák.",
     primaryColor: "text-blue-600",
     bgColor: "bg-blue-50",
+    borderColor: "border-blue-700",
   },
   {
     category: "panaky",
     name: "Vodka",
     price: 70,
     amount: "0,04 l",
-    icon: BottleWine,
+    icon: Droplet,
     description: "Vodka, velký panák.",
     primaryColor: "text-blue-600",
     bgColor: "bg-blue-50",
+    borderColor: "border-blue-700",
   },
   {
     category: "panaky",
@@ -60,8 +71,9 @@ export const products: Product[] = [
     amount: "0,02 l",
     icon: Leaf,
     description: "Zelená, malý panák.",
-    primaryColor: "text-lime-600",
-    bgColor: "bg-lime-50",
+    primaryColor: "text-white",
+    bgColor: "bg-green-700",
+    borderColor: "border-green-900",
   },
   {
     category: "panaky",
@@ -72,6 +84,7 @@ export const products: Product[] = [
     description: "Zelená, velký panák.",
     primaryColor: "text-lime-600",
     bgColor: "bg-lime-50",
+    borderColor: "border-green-700",
   },
   {
     category: "panaky",
@@ -80,8 +93,9 @@ export const products: Product[] = [
     amount: "0,02 l",
     icon: ShipWheel,
     description: "Rum, malý panák.",
-    primaryColor: "text-orange-600",
-    bgColor: "bg-orange-50",
+    primaryColor: "text-white",
+    bgColor: "bg-amber-700",
+    borderColor: "border-amber-900",
   },
   {
     category: "panaky",
@@ -92,6 +106,7 @@ export const products: Product[] = [
     description: "Rum, velký panák.",
     primaryColor: "text-orange-600",
     bgColor: "bg-orange-50",
+    borderColor: "border-green-700",
   },
 
   // pivo / beer
@@ -103,6 +118,7 @@ export const products: Product[] = [
     icon: ShipWheel,
     primaryColor: "text-orange-600",
     bgColor: "bg-orange-50",
+    borderColor: "border-green-700",
   },
   {
     category: "pivo",
@@ -112,6 +128,7 @@ export const products: Product[] = [
     icon: ShipWheel,
     primaryColor: "text-orange-600",
     bgColor: "bg-orange-50",
+    borderColor: "border-green-700",
   },
 
   // drinky / drinks
@@ -120,9 +137,31 @@ export const products: Product[] = [
     name: "Cola+Morgen",
     price: 100,
     amount: "0,3 l",
+    image: "/images/products/morgan.png",
     icon: ShipWheel,
     primaryColor: "text-orange-600",
     bgColor: "bg-orange-50",
+    borderColor: "border-green-700",
+  },
+  {
+    category: "drinky",
+    name: "Cola+Republika",
+    price: 100,
+    amount: "0,3 l",
+    icon: ShipWheel,
+    primaryColor: "text-orange-600",
+    bgColor: "bg-orange-50",
+    borderColor: "border-green-700",
+  },
+  {
+    category: "drinky",
+    name: "Redbull + Vodka",
+    price: 100,
+    amount: "0,3 l",
+    icon: ShipWheel,
+    primaryColor: "text-orange-600",
+    bgColor: "bg-orange-50",
+    borderColor: "border-green-700",
   },
   // jidlo / food
   {
@@ -133,5 +172,6 @@ export const products: Product[] = [
     icon: ShipWheel,
     primaryColor: "text-orange-600",
     bgColor: "bg-orange-50",
+    borderColor: "border-green-700",
   },
 ];

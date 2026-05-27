@@ -1,16 +1,21 @@
 import type { Product } from "../utils/productList";
+import ProductCard from "./ProductCard";
+
+type ProductModeProps = {
+  products: Product[];
+  onProductClick?: (product: Product) => void;
+};
 
 // the products should be filtered for the correct category
-const ProductMode = ({ products }: { products: Product[] }) => {
+const ProductMode = ({ products, onProductClick }: ProductModeProps) => {
   return (
-    <div className="flex flex-col gap-3 text-center">
+    <div className="grid grid-cols-2 gap-3 mt-4">
       {products.map((product, index) => (
-        <div
-          key={index}
-          className="rounded-xl bg-white px-4 py-3 text-xl font-semibold shadow-sm"
-        >
-          {product.name}
-        </div>
+        <ProductCard
+          key={`${product.name}-${product.amount}-${index}`}
+          product={product}
+          onClick={onProductClick}
+        />
       ))}
     </div>
   );

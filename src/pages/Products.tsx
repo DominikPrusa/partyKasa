@@ -56,7 +56,6 @@ const Products = () => {
     <main className="min-h-screen bg-zinc-50 px-6 text-zinc-950">
       <div className="mx-auto max-w-md">
         <div className="relative flex items-center py-3">
-          {/* TODO add confirmation to leave the page */}
           <Link to="/" className="absolute -left-1">
             <ArrowLeft className="h-8 w-8" />
           </Link>

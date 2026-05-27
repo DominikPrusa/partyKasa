@@ -32,6 +32,9 @@ const Products = () => {
         </h2>
 
         {/* TODO component with list of all items */}
+        <div className="h-32 border-zinc-400 bg-white w-full mb-4">
+          TO remove
+        </div>
         <div className="flex w-full flex-row gap-2">
           <button
             className="flex flex-1 items-center justify-center gap-4 rounded-lg bg-red-500 py-3 text-white shadow-sm"

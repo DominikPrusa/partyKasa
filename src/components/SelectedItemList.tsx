@@ -13,6 +13,9 @@ type GroupedItem = Item & {
 
 type SelectedItemsListProps = {
   items: Item[];
+  totalPrice: number;
+  isPaymentMode: boolean;
+  onTotalPriceChange: (value: number | null) => void;
   onDecreaseItem: (item: Item) => void;
   clearAll: () => void;
 };
@@ -39,12 +42,14 @@ const groupItems = (items: Item[]): GroupedItem[] => {
 
 const SelectedItemsList = ({
   items,
+  totalPrice,
+  isPaymentMode,
+  onTotalPriceChange,
   onDecreaseItem,
   clearAll,
 }: SelectedItemsListProps) => {
   const groupedItems = groupItems(items);
   const totalCount = items.length;
-  const totalPrice = items.reduce((sum, item) => sum + item.price, 0);
 
   return (
     <div className="mb-4 w-full rounded-xl border border-zinc-100 bg-white p-4 shadow-sm">
@@ -124,9 +129,26 @@ const SelectedItemsList = ({
       <div className="flex items-center justify-between">
         <span className="text-base font-bold text-zinc-950">Celkem</span>
 
-        <span className="rounded-full bg-green-50 px-4 text-lg font-bold text-green-600">
-          {totalPrice} Kč
-        </span>
+        {isPaymentMode ? (
+          <div className="flex items-center gap-2 rounded-lg border border-green-500 px-3 text-lg font-bold text-green-600">
+            <input
+              type="number"
+              inputMode="numeric"
+              value={totalPrice === 0 ? "" : totalPrice}
+              onChange={(event) => {
+                const value = event.target.value;
+
+                onTotalPriceChange(value === "" ? 0 : Number(value));
+              }}
+              className="w-20 bg-transparent text-right font-bold outline-none"
+            />
+            <span>Kč</span>
+          </div>
+        ) : (
+          <span className="rounded-full bg-green-50 px-4 text-lg font-bold text-green-600">
+            {totalPrice} Kč
+          </span>
+        )}
       </div>
     </div>
   );

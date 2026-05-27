@@ -18,6 +18,7 @@ const Products = () => {
 
   const [mode, setMode] = useState<"products" | "payment">("products");
   const [itemList, setItemList] = useState<Item[]>([]);
+  const [customTotalPrice, setCustomTotalPrice] = useState<number | null>(null);
 
   const handleProductClick = (product: Product) => {
     const newItem: Item = {
@@ -28,6 +29,7 @@ const Products = () => {
     };
 
     setItemList((currentItems) => [...currentItems, newItem]);
+    setCustomTotalPrice(null);
   };
 
   const handleDecreaseItem = (itemToDecrease: Item) => {
@@ -44,9 +46,11 @@ const Products = () => {
 
       return currentItems.filter((_, index) => index !== indexToRemove);
     });
-  };
 
-  const totalPrice = itemList.reduce((sum, item) => sum + item.price, 0);
+    setCustomTotalPrice(null);
+  };
+  const itemsTotalPrice = itemList.reduce((sum, item) => sum + item.price, 0);
+  const totalPrice = customTotalPrice ?? itemsTotalPrice;
 
   return (
     <main className="min-h-screen bg-zinc-50 px-6 text-zinc-950">
@@ -66,8 +70,14 @@ const Products = () => {
 
         <SelectedItemsList
           items={itemList}
+          totalPrice={totalPrice}
+          isPaymentMode={mode === "payment"}
+          onTotalPriceChange={setCustomTotalPrice}
           onDecreaseItem={handleDecreaseItem}
-          clearAll={() => setItemList([])}
+          clearAll={() => {
+            setItemList([]);
+            setCustomTotalPrice(null);
+          }}
         />
         <div className="flex w-full flex-row gap-2">
           <button

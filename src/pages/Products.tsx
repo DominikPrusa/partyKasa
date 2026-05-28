@@ -1,6 +1,6 @@
 import { Link, useSearchParams } from "react-router-dom";
 import { products, type Product } from "../utils/productList";
-import { ArrowLeft, Banknote, Check, Undo2 } from "lucide-react";
+import { ArrowLeft, ArrowUp, Banknote, Check, Undo2 } from "lucide-react";
 import { categoryMapper } from "../utils/categoryNameMap";
 import { useState } from "react";
 import ProductMode from "../components/ProductMode";
@@ -123,6 +123,33 @@ const Products = () => {
         ) : (
           <PaymentMode totalPrice={totalPrice} />
         )}
+
+        {/* extra buttons for long lists but only for the product mode (otherwise unnecessary)*/}
+        {mode === "products" && category !== "jidlo" ? (
+          <div className="flex w-full flex-row gap-2">
+            <button
+              className="flex flex-1 items-center justify-center gap-4 rounded-lg bg-red-500 py-3 text-white shadow-sm"
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                });
+              }}
+            >
+              <ArrowUp className="h-6 w-6" />
+              <span className="text-lg font-semibold">Nahoru</span>
+            </button>
+
+            <button
+              className="flex flex-1 items-center justify-center gap-4 rounded-lg bg-green-600 py-3 text-white shadow-sm"
+              onClick={() => {
+                setMode("payment");
+              }}
+            >
+              <Banknote className="h-6 w-6" />
+              <span className="text-lg font-semibold">Placení</span>
+            </button>
+          </div>
+        ) : null}
       </div>
     </main>
   );

@@ -81,11 +81,11 @@ const SelectedItemsList = ({
       <div className="my-4 h-px w-full bg-zinc-200" />
 
       {items.length === 0 ? (
-        <p className=" text-sm font-medium text-zinc-400">
+        <p className=" text-sm min-h-24 font-medium text-zinc-400">
           Přidej položky výběrem produktu.
         </p>
       ) : (
-        <div className="space-y-3">
+        <div className="min-h-24 space-y-3">
           {groupedItems.map((item) => (
             <div
               key={`${item.name}-${item.fullName}-${item.amount}-${item.price}`}

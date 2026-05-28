@@ -2,7 +2,6 @@ import {
   Droplet,
   Cross,
   Leaf,
-  ShipWheel,
   Apple,
   Popsicle,
   Beer,

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import type { Product } from "../utils/productList";
 
 type ProductCardProps = {
@@ -17,10 +18,58 @@ const getNameTextSize = (name: string) => {
 const ProductCard = ({ product, onClick }: ProductCardProps) => {
   const Icon = product.icon;
 
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const clickBufferRef = useRef<AudioBuffer | null>(null);
+
+  useEffect(() => {
+    const AudioContextClass =
+      window.AudioContext || (window as any).webkitAudioContext;
+
+    const audioContext = new AudioContextClass();
+    audioContextRef.current = audioContext;
+
+    fetch("/sounds/click.mp3")
+      .then((res) => res.arrayBuffer())
+      .then((arrayBuffer) => audioContext.decodeAudioData(arrayBuffer))
+      .then((audioBuffer) => {
+        clickBufferRef.current = audioBuffer;
+      })
+      .catch(() => {});
+
+    return () => {
+      audioContext.close();
+    };
+  }, []);
+
+  const playClickSound = () => {
+    const audioContext = audioContextRef.current;
+    const clickBuffer = clickBufferRef.current;
+
+    if (!audioContext || !clickBuffer) return;
+
+    if (audioContext.state === "suspended") {
+      audioContext.resume();
+    }
+
+    const source = audioContext.createBufferSource();
+    const gain = audioContext.createGain();
+
+    gain.gain.value = 0.35;
+
+    source.buffer = clickBuffer;
+    source.connect(gain);
+    gain.connect(audioContext.destination);
+
+    source.start(0);
+  };
+
   return (
     <button
       type="button"
-      onClick={() => onClick?.(product)}
+      onClick={() => {
+        playClickSound();
+        onClick?.(product);
+      }}
       className={`
         relative flex min-h-34 flex-col items-center justify-center rounded-lg
         border border-t-6 ${product.borderColor} ${product.bgColor}

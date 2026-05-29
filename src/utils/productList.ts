@@ -284,6 +284,17 @@ export const products: Product[] = [
   // pivo / beer
   {
     category: "pivo",
+    name: "Záloha (vrácení)",
+    fullName: "Záloha za kelímek (vrácení)",
+    price: -50,
+    amount: "-1 ks",
+    icon: GlassWater,
+    primaryColor: "text-red-500",
+    bgColor: "bg-red-50",
+    borderColor: "border-red-500",
+  },
+  {
+    category: "pivo",
     name: "Záloha",
     fullName: "Záloha za kelímek",
     price: 50,
@@ -292,6 +303,17 @@ export const products: Product[] = [
     primaryColor: "text-gray-500",
     bgColor: "bg-gray-50",
     borderColor: "border-gray-500",
+  },
+  {
+    category: "pivo",
+    name: "Birell nealko",
+    fullName: "Birell nealko",
+    price: 40,
+    amount: "0,5 l",
+    image: "/images/products/birell.png",
+    primaryColor: "text-white",
+    bgColor: "bg-amber-700",
+    borderColor: "border-amber-600",
   },
   {
     category: "pivo",
@@ -393,19 +415,18 @@ export const products: Product[] = [
     borderColor: "border-cyan-300",
   },
 
-  {
-    category: "pivo",
-    name: "Birell nealko",
-    fullName: "Birell nealko",
-    price: 50,
-    amount: "0,5 l",
-    image: "/images/products/birell.png",
-    primaryColor: "text-white",
-    bgColor: "bg-amber-700",
-    borderColor: "border-amber-600",
-  },
-
   // drinky / drinks
+  {
+    category: "drinky",
+    name: "Záloha (vrácení)",
+    fullName: "Záloha za kelímek (vrácení)",
+    price: -50,
+    amount: "-1 ks",
+    icon: GlassWater,
+    primaryColor: "text-red-500",
+    bgColor: "bg-red-50",
+    borderColor: "border-red-500",
+  },
   {
     category: "drinky",
     name: "Záloha",
@@ -507,17 +528,6 @@ export const products: Product[] = [
   },
   {
     category: "drinky",
-    name: "Víno b./č. - v. střik",
-    fullName: "Víno bílé/červené - Vinný střik",
-    price: 60,
-    amount: "0,3 l - 0.5l",
-    icon: Wine,
-    primaryColor: "text-white",
-    bgColor: "bg-red-900",
-    borderColor: "border-amber-300",
-  },
-  {
-    category: "drinky",
     name: "Jem.per.voda",
     fullName: "Jemně perlivá voda",
     price: 10,
@@ -537,6 +547,17 @@ export const products: Product[] = [
     primaryColor: "text-sky-800",
     bgColor: "bg-cyan-100",
     borderColor: "border-cyan-300",
+  },
+  {
+    category: "drinky",
+    name: "Víno b./č. - v. střik",
+    fullName: "Víno bílé/červené - Vinný střik",
+    price: 60,
+    amount: "0,3 l - 0.5l",
+    icon: Wine,
+    primaryColor: "text-white",
+    bgColor: "bg-red-900",
+    borderColor: "border-amber-300",
   },
 
   // jidlo / food

@@ -126,7 +126,7 @@ const Products = () => {
 
         {/* extra buttons for long lists but only for the product mode (otherwise unnecessary)*/}
         {mode === "products" && category !== "jidlo" ? (
-          <div className="flex w-full flex-row gap-2">
+          <div className="flex w-full flex-row gap-2 mb-4">
             <button
               className="flex flex-1 items-center justify-center gap-4 rounded-lg bg-red-500 py-3 text-white shadow-sm"
               onClick={() => {
